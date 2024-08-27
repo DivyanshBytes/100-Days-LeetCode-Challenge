@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int minSwaps(string s) {
+        stack<char> temp;
+        for(int i=0; i<s.size(); i++){
+            if(s[i] == '[')
+                temp.push(s[i]);
+            else{
+                if(temp.empty() || temp.top() == ']')
+                    temp.push(s[i]);
+                else
+                    temp.pop();
+            }
+        }
+        int size = temp.size();
+        int evenORodd = size/2;
+        int ans = 0;
+        if(evenORodd % 2 == 0)
+            ans = evenORodd/2;
+        else
+            ans = (evenORodd+1)/2;
+    return ans;
+    }
+};
